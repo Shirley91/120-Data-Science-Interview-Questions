@@ -46,37 +46,51 @@
 - Things to look at: N, P, linearly seperable?, features independent?, likely to overfit?, speed, performance, memory usage
 - Logistic Regression
   - features roughly linear, problem roughly linearly separable
-  - robust to noise, use l1,l2 regularization for model selection, avoid overfitting
-  - the output come as probabilities
+  - can turn most non-linear fetures into linear pretty easily
+  - robust to noise, use l1,l2 regularization for model selection, avoid overfitting, low variance
+  - the output can be interpreted as a probability
   - efficient and the computation can be distributed
-  - can be used as a baseline for other algorithms
+  - a simple l2-regularized logistic regression can be used as a baseline for other algorithms
   - (-) can hardly handle categorical features
+  - (-) high bias, tends to underperform when there are multiple or non-linear decision boundaries
+  - (-) not fleible enough to naturally capture more complex relationships
 - Support Vector Machines (SVM)
-  - with a nonlinear kernel, can deal with problems that are not linearly separable
-  - (-) slow to train, for most industry scale applications, not really efficient
+  - with a nonlinear kernel, can deal with problems that are not linearly separable (many kernels to choose)
+  - good performance with high dimensional dataset, e.g. text classification
+  - high accuracy, not biased by outliers
+  - resistant to overfitting
+  - (-) slow to train, for most industry scale applications (large number of features), not really efficient
+  - (-) memory intensive
 - Naive Bayes
-  - computationally efficient when P is large by alleviating the curse of dimensionality
+  - computationally efficient when P is large by alleviating the curse of dimensionality (more features than observations)
   - works surprisingly well for some cases even if the condition doesn’t hold
   - with word frequencies as features, the independence assumption can be seen reasonable. So the algorithm can be used in text categorization
+  - faset to train and predict, simple to implement
   - (-) conditional independence of every other feature should be met
+  - (-) can be hampered by irrelevant features
+  - (-) probabilistic estimates are unreliable because of naive assumption
+  - (-) often outperformed by other models
 - Tree Ensembles
+  - do not expect linear features or even features that interact linearly
   - good for large N and large P, can deal with categorical features very well
   - non parametric, so no need to worry about outliers
-  - GBT’s work better but the parameters are harder to tune
-  - RF works out of the box, but usually performs worse than GBT
+  - Gradient Boosted Decision Trees (GBT) usually work better but are harder to get right (more hyperparameters to tune and more prone to overfitting), while Random Forest can almost work 'out of the box', but usually performs worse than GBT
+  - (-) overfitting may occur, hard for interpretation
 - Deep Learning
-  - works well for some classification tasks (e.g. image)
+  - works well for some classification tasks (e.g. image, vedio, text)
   - used to squeeze something out of the problem
 
 #### 7. What is regularization and where might it be helpful? What is an example of using regularization in a model?
-- Regularization is useful for reducing variance in the model, meaning avoiding overfitting . For example, we can use L1 regularization in Lasso regression to penalize large coefficients.
+- Regularization is a process of introducting additional information in order to solve an ill-posed problem or to prevent overfitting, including Ridge (shrink the magnitude of coefficients fastly), LASSO (least absolute shrinkage and selection operator, feature selection), and Elastic Net (combination of ridge and lasso).
+- For example, we can use LASSO (l1) regularization in LASSO regression to penalize large coefficients.
 
 #### 8. Why might it be preferable to include fewer predictors over many?
-- When we add irrelevant features, it increases model's tendency to overfit because those features introduce more noise. When two variables are correlated, they might be harder to interpret in case of regression, etc.
+- When we add irrelevant features, it increases model's tendency to overfit because those features introduce more noise and the model will not do well with new data points. When two variables are correlated, they might be harder to interpret in case of regression, etc.
+- Using too many features means getting more data, while it is not always possible to get all the data, so missing/sparse data can be very dangerous for the model performance.
 - curse of dimensionality
 - adding random noise makes the model more complicated but useless
 - computational cost
-- Ask someone for more details.
+- Methods to avoid the problem: reduce the number of features by manually selecting only required features or using a medel selection algorithm; use regularization (LASSO).
 
 #### 9. Given training data on tweets and their retweets, how would you predict the number of retweets of a given tweet after 7 days after only observing 2 days worth of data?
 - Build a time series model with the training data with a seven day cycle and then use that for a new data with only 2 days data.
@@ -88,8 +102,12 @@
 - https://en.wikipedia.org/wiki/Dynamic_time_warping
 
 #### 10. How could you collect and analyze data to use social media to predict the weather?
-- We can collect social media data using twitter, Facebook, instagram API’s. Then, for example, for twitter, we can construct features from each tweet, e.g. the tweeted date, number of favorites, retweets, and of course, the features created from the tweeted content itself. Then use a multi variate time series model to predict the weather.
-- Ask someone for more details.
+- We can collect historical data from social media, such as twitter, Facebook, instagram API’s, based on location or social network. 
+- Then define and label the weather in the past x days for each feed. 
+- For each feed, find the words or phrase using with text matrix, for example, there may be some featured terms, like 'umbrella'. And feature reduction can be performed based on the weather information (only choose the highly frequent ones for a perticular weather).
+- Find other possible attributes, such as date, location, etc.
+- Extract the text and other attributes from the feed using National Language Processing (NLP) and then data manipulation.
+- Build models with the historical data for a general weather prediction, such as KNN, Random Forest.
 
 #### 11. How would you construct a feed to show relevant content for a site that involves user interactions with items?
 - We can do so using building a recommendation engine. The easiest we can do is to show contents that are popular other users, which is still a valid strategy if for example the contents are news articles. To be more accurate, we can build a content based filtering or collaborative filtering. If there’s enough user usage data, we can try collaborative filtering and recommend contents other similar users have consumed. If there isn’t, we can recommend similar items based on vectorization of items (content based filtering).
@@ -106,6 +124,7 @@
   - Affinity score: how close the content creator and the users are
   - Weight: weight for the edge type (comment, like, tag, etc.). Emphasis on features the company wants to promote
   - Time decay: the older the less important
+  - more details: https://www.quora.com/How-does-LinkedIns-People-You-May-Know-work, https://www.quora.com/How-does-Facebooks-People-You-May-Know-work
 
 #### 13. How would you predict who someone may want to send a Snapchat or Gmail to?
 - for each user, assign a score of how likely someone would send an email to
@@ -131,20 +150,21 @@
   - show your recent searches given partial data
 
 #### 16. Given a database of all previous alumni donations to your university, how would you predict which recent alumni are most likely to donate?
-- Based on frequency and amount of donations, graduation year, major, etc, construct a supervised regression (or binary classification) algorithm.
+- Based on frequency and amount of donations, graduation year, major, job type, income, etc, construct a supervised regression (or binary classification) algorithm.
 
 #### 17. You’re Uber and you want to design a heatmap to recommend to drivers where to wait for a passenger. How would you approach this?
-- Based on the past pickup location of passengers around the same time of the day, day of the week (month, year), construct
-- Ask someone for more details.
+- Based on the past pickup location of passengers around the same time of the day, day of the week (month, year)
 - Based on the number of past pickups
   - account for periodicity (seasonal, monthly, weekly, daily, hourly)
   - special events (concerts, festivals, etc.) from tweets
+- Based on the above information, create frequency table, including location, frequency in certain time, then select the top K locations as recommend to drivers. 
 
 #### 18. How would you build a model to predict a March Madness bracket?
 - One vector each for team A and B. Take the difference of the two vectors and use that as an input to predict the probability that team A would win by training the model. Train the models using past tournament data and make a prediction for the new tournament by running the trained model for each round of the tournament
 - Some extensions:
   - Experiment with different ways of consolidating the 2 team vectors into one (e.g concantenating, averaging, etc)
   - Consider using a RNN type model that looks at time series data.
+- more details: https://arxiv.org/abs/1412.0248
 
 #### 19. You want to run a regression to predict the probability of a flight delay, but there are flights with delays of up to 12 hours that are really messing up your model. How can you address this?
 - This is equivalent to making the model more robust to outliers.
