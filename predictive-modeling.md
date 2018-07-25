@@ -1,10 +1,12 @@
 ## Predictive Modeling (19 questions)
 #### 1. (Given a Dataset) Analyze this dataset and give me a model that can predict this response variable.
-- Start by fitting a simple model (multivariate regression, logistic regression), do some feature engineering accordingly, and then try some complicated models. Always split the dataset into train, validation, test dataset and use cross validation to check their performance.
+- For raw dataset, need to process the data first: validate data, clean data (such as deal with extreme data), data transformation and aggregation, and manipulate missing values.
+- Explore data: identification of variables, different data types need different analysis methods, check multi-collinearity (regularization) and normality of the variables using correlation matrix, scatter plot, etc. If too many variables, it's better to consider dimension reduction, such as Principal Component Analysis (PCA).
 - Determine if the problem is classification or regression
+- Start by fitting a simple model (multivariate regression, logistic regression), do some feature engineering accordingly, and then try some complicated models. Always split the dataset into train, validation, and test dataset. Use cross validation to check their performance and use LASSO (L1 norm) for feature selection.
+- Compare performance of multiple models with evaluatio metrics, e.g. MSE, MAE, weighted MSE, and tune model for better performance, such as change model parameter, add or delete features, and interation terms.
 - Favor simple models that run quickly and you can easily explain.
-- Mention cross validation as a means to evaluate the model.
-- Plot and visualize the data.
+- Visualize the data and the relationship between predictors and response and make a conclusion. 
 
 #### 2. What could be some issues if the distribution of the test data is significantly different than the distribution of the training data?
 - The model that has high training accuracy might have low test accuracy. Without further knowledge, it is hard to know which dataset represents the population data and thus the generalizability of the algorithm is hard to measure. This should be mitigated by repeated splitting of train vs test dataset (as in cross validation).
@@ -13,31 +15,31 @@
 - This can occur when:
   - P(y|x) are the same but P(x) are different. (covariate shift)
   - P(y|x) are different. (concept shift)
-- The causes can be:
-  - Training samples are obtained in a biased way. (sample selection bias)
-  - Train is different from test because of temporal, spatial changes. (non-stationary environments)
-- Solution to covariate shift
-  - importance weighted cv
+- The causes and potential solutions:
+  - Sample selection bias: training samples are obtained in a biased way, such as non-uniform selection. And cross-validation can help to solve this problem.
+  - Covariate shift: training and test input follow different distributions, but functional relation remains unchanged. And importance weighted cross-validation using Kernel Mean Match (KMM) can help to solve this problem.
+  - Non-stationary environments: Training environment is different from the test one because of temporal or spatial changes. One typical scenario is adversarial classification problems, such as spam filtering and network intrusion detection. 
 #### 3. What are some ways I can make my model more robust to outliers?
 - We can have regularization such as L1 or L2 to reduce variance (increase bias).
 - Changes to the algorithm:
   - Use tree-based methods instead of regression methods as they are more resistant to outliers. For statistical tests, use non parametric tests instead of parametric ones.
   - Use robust error metrics such as MAE or Huber Loss instead of MSE.
 - Changes to the data:
-  - Winsorizing the data
+  - Winsorizing the data (tansformation of statistics by limiting extreme values)
   - Transforming the data (e.g. log)
   - Remove them only if you’re certain they’re anomalies not worth predicting
 
-#### 4. What are some differences you would expect in a model that minimizes squared error, versus a model that minimizes absolute error? In which cases would each error metric be appropriate?
-- MSE is more strict to having outliers. MAE is more robust in that sense, but is harder to fit the model for because it cannot be numerically optimized. So when there are less variability in the model and the model is computationally easy to fit, we should use MAE, and if that’s not the case, we should use MSE.
-- MSE: easier to compute the gradient, MAE: linear programming needed to compute the gradient
-- MAE more robust to outliers. If the consequences of large errors are great, use MSE
-- MSE corresponds to maximizing likelihood of Gaussian random variables
+#### 4. What are some differences you would expect in a model that minimizes squared error, versus a model that minimizes absolute error? In which cases would each error metric be appropriate? 
+- Both MSE and MAE are used in predictive modeling.
+- MSE had nice mathematical properties which makes it earier to compute the gradient, while MAE requires more complicated tools such as linear programming to compute the gradient. 
+- Because of the square, large errors have relatively greater influence on MSE than do the smaller error. Therefor, MSE is more strict to having outliers. MAE is more robust in that sense, but is harder to fit the model for because it cannot be numerically optimized. So when there are less variability in the model and the model is computationally easy to fit, we should use MAE, and if that’s not the case, we should use MSE.
+- MSE is more useful if we are concerned about large errors whose consequences are much bigger than eauivalent smaller ones. And MSE also corresponds to maximizing likelihood of Gaussian random variables.
 
 #### 5. What error metric would you use to evaluate how good a binary classifier is? What if the classes are imbalanced? What if there are more than 2 groups?
-- Accuracy: proportion of instances you predict correctly. Pros: intuitive, easy to explain, Cons: works poorly when the class labels are imbalanced and the signal from the data is weak
-- AUROC: plot fpr on the x axis and tpr on the y axis for different threshold. Given a random positive instance and a random negative instance, the AUC is the probability that you can identify who's who. Pros: Works well when testing the ability of distinguishing the two classes, Cons: can’t interpret predictions as probabilities (because AUC is determined by rankings), so can’t explain the uncertainty of the model
-- logloss/deviance: Pros: error metric based on probabilities, Cons: very sensitive to false positives, negatives
+- Accuracy: proportion of instances you predict correctly. Pros: intuitive, easy to explain, Cons: works poorly when the signal in the data is weak compared to the signal from the class imbalance. Also, you cannot express your uncertaintyabout a certain prediction.
+- AUC (area under ROC curve): plot fpr on the x axis and tpr on the y axis for different threshold. Given a random positive instance and a random negative instance, the AUC is the probability that you can identify who's who. Pros: Works well when testing the ability of distinguishing the two classes, Cons: can’t interpret predictions as probabilities (because AUC only cares about the ranings of the prediction scores and not their actual values), so may not express the uncertainty about a prediction, or even the prebability that an item is successful.
+- logloss/deviance: Pros: error metric based on probabilities,thus, estimates can be interpreted as prebabilities, Cons: very sensitive to false positives or false negatives when a lot of predictions that are near the boundaries.
+- Other methods: F-score, Mean Average Precision, Cohen's Kappa, not as often used for general binary classification tasks, but may see them in specific subfields, e.g. F-score in NLP and Precision metrics in information retrieval.
 - When there are more than 2 groups, we can have k binary classifications and add them up for logloss. Some metrics like AUC is only applicable in the binary case.
 
 #### 6. What are various ways to predict a binary response variable? Can you compare two of them and tell me when one would be more appropriate? What’s the difference between these? (SVM, Logistic Regression, Naive Bayes, Decision Tree, etc.)
@@ -49,7 +51,7 @@
   - efficient and the computation can be distributed
   - can be used as a baseline for other algorithms
   - (-) can hardly handle categorical features
-- SVM
+- Support Vector Machines (SVM)
   - with a nonlinear kernel, can deal with problems that are not linearly separable
   - (-) slow to train, for most industry scale applications, not really efficient
 - Naive Bayes
