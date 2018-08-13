@@ -5,12 +5,14 @@
   - MANOVA to compare different means
 #### 2. What might be the benefits of running an A/A test, where you have two buckets who are exposed to the exact same product?
   - Verify the sampling algorithm is random.
+  - Setting a baseline conversion rate for future A/B test
+  - Deciding the minimum sample size
 #### 3. What would be the hazards of letting users sneak a peek at the other bucket in an A/B test?
-  - The user might not act the same suppose had they not seen the other bucket. You are essentially adding additional variables of whether the user peeked the other bucket, which are not random across groups.
+  - This would invalidate the results: the user might not act the same suppose had they not seen the other bucket. You are essentially adding additional variables of whether the user peeked the other bucket, which are not random across groups.
 #### 4. What would be some issues if blogs decide to cover one of your experimental groups?
-  - Same as the previous question. The above problem can happen in larger scale.
+  - Same as the previous question. The above problem can happen in larger scale. The blogs would skew the results.
 #### 5. How would you conduct an A/B test on an opt-in feature? 
-  - Ask someone for more details.
+  - Ask someone for more details (what you are providing the users in exchange for their opt-in).
 #### 6. How would you run an A/B test for many variants, say 20 or more?
   - one control, 20 treatment, if the sample size for each group is big enough.
   - Ways to attempt to correct for this include changing your confidence level (e.g. Bonferroni Correction) or doing family-wide tests before you dive in to the individual metrics (e.g. Fisher's Protected LSD).
@@ -22,24 +24,25 @@
   - <https://www.quora.com/How-would-you-run-an-A-B-test-if-the-observations-are-extremely-right-skewed>
 #### 8. I have two different experiments that both change the sign-up button to my website. I want to test them at the same time. What kinds of things should I keep in mind?
   - exclusive -> ok
-#### 9. What is a p-value? What is the di erence between type-1 and type-2 error?
-  -   
-
+#### 9. What is a p-value? What is the difference between type-1 and type-2 error?
+  - The P value, or calculated probability, is the probability of finding the observed, or more extreme, results when the null hypothesis (H0) of a study question is true – the definition of ‘extreme’ depends on how the hypothesis is being tested. P is also described in terms of rejecting H0 when it is actually true, however, it is not a direct probability of this state.
   - type-1 error: rejecting Ho when Ho is true
   - type-2 error: not rejecting Ho when Ha is true
 #### 10. You are AirBnB and you want to test the hypothesis that a greater number of photographs increases the chances that a buyer selects the listing. How would you test this hypothesis?
-  - For randomly selected listings with more than 1 pictures, hide 1 random picture for group A, and show all for group B. Compare the booking rate for the two groups.
-  - Ask someone for more details.
+  - Make sure the mean of 'greater number of photographs', then define group A/B (same item with less picture first then add more pitures later; or randomly hide some picture for group A and show all for group B).
+  - For example, randomly selected listings with more than 1 pictures, hide 1 random picture for group A, and show all for group B. Compare the booking rate for the two groups.
 #### 11. How would you design an experiment to determine the impact of latency on user engagement?
+  - Make sure the mean of 'latency' and 'user engagement', then define metrics
   - The best way I know to quantify the impact of performance is to isolate just that factor using a slowdown experiment, i.e., add a delay in an A/B test.
 #### 12. What is maximum likelihood estimation? Could there be any case where it doesn’t exist?
-  - A method for parameter optimization (fitting a model). We choose parameters so as to maximize the likelihood function (how likely the outcome would happen given the current data and our model).
-  - maximum likelihood estimation (MLE) is a method of [estimating](https://en.wikipedia.org/wiki/Estimator "Estimator") the [parameters](https://en.wikipedia.org/wiki/Statistical_parameter "Statistical parameter") of a [statistical model](https://en.wikipedia.org/wiki/Statistical_model "Statistical model") given observations, by finding the parameter values that maximize the [likelihood](https://en.wikipedia.org/wiki/Likelihood "Likelihood") of making the observations given the parameters. MLE can be seen as a special case of the [maximum a posteriori estimation](https://en.wikipedia.org/wiki/Maximum_a_posteriori_estimation "Maximum a posteriori estimation") (MAP) that assumes a [uniform](https://en.wikipedia.org/wiki/Uniform_distribution_\(continuous\) "Uniform distribution \(continuous\)") [prior distribution](https://en.wikipedia.org/wiki/Prior_probability "Prior probability") of the parameters, or as a variant of the MAP that ignores the prior and which therefore is [unregularized](https://en.wikipedia.org/wiki/Regularization_\(mathematics\) "Regularization \(mathematics\)").
+  - A method of eatimating the parameters of a statistical model, given observations. We choose parameters so as to maximize the likelihood function (how likely the outcome would happen given the current data and our model).
   - for gaussian mixtures, non parametric models, it doesn’t exist
+  - maximum likelihood estimation (MLE) is a method of [estimating](https://en.wikipedia.org/wiki/Estimator "Estimator") the [parameters](https://en.wikipedia.org/wiki/Statistical_parameter "Statistical parameter") of a [statistical model](https://en.wikipedia.org/wiki/Statistical_model "Statistical model") given observations, by finding the parameter values that maximize the [likelihood](https://en.wikipedia.org/wiki/Likelihood "Likelihood") of making the observations given the parameters. MLE can be seen as a special case of the [maximum a posteriori estimation](https://en.wikipedia.org/wiki/Maximum_a_posteriori_estimation "Maximum a posteriori estimation") (MAP) that assumes a [uniform](https://en.wikipedia.org/wiki/Uniform_distribution_\(continuous\) "Uniform distribution \(continuous\)") [prior distribution](https://en.wikipedia.org/wiki/Prior_probability "Prior probability") of the parameters, or as a variant of the MAP that ignores the prior and which therefore is [unregularized](https://en.wikipedia.org/wiki/Regularization_\(mathematics\) "Regularization \(mathematics\)").
 #### 13. What’s the di erence between a MAP, MOM, MLE estima\- tor? In which cases would you want to use each?
   - MAP estimates the posterior distribution given the prior distribution and data which maximizes the likelihood function. MLE is a special case of MAP where the prior is uninformative uniform distribution.
   - MOM sets moment values and solves for the parameters. MOM is not used much anymore because maximum likelihood estimators have higher probability of being close to the quantities to be estimated and are more often unbiased.
 #### 14. What is a confidence interval and how do you interpret it?
+  - A confidence interval is a type of interval estimate, computed from the statistics of the observed data, that might contain the true value of an unknown population parameter. More strictly, the confidence level represents the frequency of posible confidence intervals that contain the true value of the unknown population parameter.
   - For example, 95% confidence interval is an interval that when constructed for a set of samples each sampled in the same way, the constructed intervals include the true mean 95% of the time.
   - if confidence intervals are constructed using a given confidence level in an infinite number of independent experiments, the proportion of those intervals that contain the true value of the parameter will match the confidence level.
 #### 15. What is unbiasedness as a property of an estimator? Is this always a desirable property when performing inference? What about in data analysis or predictive modeling?
