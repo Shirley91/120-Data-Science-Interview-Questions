@@ -1,25 +1,39 @@
 ## Product Metrics (15 questions)
 
 #### 1. What would be good metrics of success for an advertising-driven consumer product? (Buzzfeed, YouTube, Google Search, etc.) A service-driven consumer product? (Uber, Flickr, Venmo, etc.)
-  * advertising-driven: Pageviews and daily actives, CTR, CPC (cost per click)
-    * click-ads  
-    * display-ads  
-  * service-driven: number of purchases, conversion rate
-#### 2. What would be good metrics of success for a productiv- ity tool? (Evernote, Asana, Google Docs, etc.) A MOOC? (edX, Coursera, Udacity, etc.)
-  * productivity tool: same as premium subscriptions
-  * MOOC: same as premium subscriptions, completion rate
-#### 3. What would be good metrics of success for an e-commerce product? (Etsy, Groupon, Birchbox, etc.) A subscrip- tion product? (Net ix, Birchbox, Hulu, etc.) Premium subscriptions? (OKCupid, LinkedIn, Spotify, etc.) 
-  * e-commerce: number of purchases, conversion rate, Hourly, daily, weekly, monthly, quarterly, and annual sales, Cost of goods sold, Inventory levels, Site traffic, Unique visitors versus returning visitors, Customer service phone call count, Average resolution time
-  * subscription
-    * churn, CoCA, ARPU, MRR, LTV
-  * premium subscriptions: 
+  * Funnel: impression -> click -> conversion -> sale (may consider referral)
+  * advertising-driven: Pageviews, daily actives
+    * by impression (display-ads): CPM (cost per thousand impressions), RPI (revenue per impression)
+    * by click (click-ads): CTR (click through rate), CPC (cost per click), RPC (revenue per click)
+    * by conversion (not widely used): CVR (conversion rate)
+    * ROAS (return on ad spend), ROI (return on investment)
+  * service-driven: number of purchases
+    * customer success: active users, CAC (customer acquisition cost), CVR (conversion rate), RCR (retention-churn ratio)
+    * business operations: MRR (monthly recurring revenue), ARR (total annual recurring revenue), LTV (lifetime value)
+    
+#### 2. What would be good metrics of success for a productivity tool? (Evernote, Asana, Google Docs, etc.) A MOOC? (edX, Coursera, Udacity, etc.)
+  * productivity tool: generally have base (free), premium (individual pay), and business (group pay) users.
+    * daily active users, daily new users, TAD (total active days per user), CVR (conversion rate), RCR (retention-churn ratio), payment ratio, average revenue per user, etc.
+  * MOOC: daily new users,daily active users, daily average online time, registered rate, completion rate
+  
+#### 3. What would be good metrics of success for an e-commerce product? (Etsy, Groupon, Birchbox, etc.) A subscription product? (Netfix, Birchbox, Hulu, etc.) Premium subscriptions? (OKCupid, LinkedIn, Spotify, etc.) 
+  * e-commerce: number of purchases, conversion rate, Hourly, daily, weekly, monthly, quarterly, and annual sales, Cost of goods sold, Inventory levels, Site traffic, Unique visitors versus returning visitors, Average resolution time, CRR (customer retention rate), AOV (average order volume), LTV (lifetime value), ATC (add to cart ratio), brand name search, CAR (cart abandonment rate)
+    * ads on e-commerce: CPA (cost per acquisition = ad spend / orders), RPC (revenue per click = revenue from ads / ads clicks)
+  * subscription: daily active users, daily new users, churn or RCR (retention-churn ratio), MRR (monthly recurring revenue), ARPU (average revenue per user), SGR (subscriber growth rate based on month), CPA (cost per acquisition), LTV (lifetime value)
+  * premium subscriptions: same to abive, CTR (click through rate), CPA (cost per acquisition, ROI (return on investment), etc.
 
-#### 4. What would be good metrics of success for a consumer product that relies heavily on engagement and interac- tion? (Snapchat, Pinterest, Facebook, etc.) A messaging product? (GroupMe, Hangouts, Snapchat, etc.)
-  * heavily on engagement and interaction: uses AU ratios, email summary by type, and push notification summary by type, resurrection ratio
-  * messaging product: 
-#### 5. What would be good metrics of success for a product that o ered in-app purchases? (Zynga, Angry Birds, other gaming apps)
-  * Average Revenue Per Paid User
-  * Average Revenue Per User
+#### 4. What would be good metrics of success for a consumer product that relies heavily on engagement and interaction? (Snapchat, Pinterest, Facebook, etc.) A messaging product? (GroupMe, Hangouts, Snapchat, etc.)
+  * heavily on engagement and interaction: MAU/DAU (monthly/daily active users), daily average online time, page viewed per hour/day/week/month, number of engagements (including connections, new content, comments, shares, clickes and likes) per users per day/week/month, tap-throughs, opting in to push notifications, direct open rates, event conversions, interaction percentage
+  * messaging product: MAU/DAU (monthly/daily active users), number of connections per users per day/week/month
+  
+#### 5. What would be good metrics of success for a product that offered in-app purchases? (Zynga, Angry Birds, other gaming apps)
+  * Average Revenue Per Paid User vs. Average Revenue Per User, percent of users making an in-app purchase, daily average time in-app
+  * metrics for mobile product (app):
+    * customer activity: downloads, MAU/DAU (monthly/daily active users),session length (period time between app open and app close), session interval (frequency in which users open the app and how sticky the app is), time in-app
+    * conversion and retention: CVR (conversion rate), churn, retention, RCR (retention-churn ratio), love score (based on the app's popularity, ratings and reviews, customer sentiment, reviewer quality, and Apptentive’s internal database with over 50 million mobile customers to compare)
+    * revenue: download revenue for paid apps, in-app revenue, LTV (lifetime value)
+    * team: quality of features released, timing of features released, team sentiment (team love score)
+    
 #### 6. A certain metric is violating your expectations by going down or up more than you expect. How would you try to identify the cause of the change?
   * breakdown the KPI’s into what consists them and find where the change is
   * then further breakdown that basic KPI by channel, user cluster, etc. and relate them with any campaigns, changes in user behaviors in that segment
@@ -44,4 +58,4 @@
   * Netflix uses data to estimate the potential market size for an original series before giving it the go-ahead.
 #### 14. What kind of services would  nd churn (metric that tracks how many customers leave the service) helpful? How would you calculate churn?
   * subscription based services
-#### 15. Let’s say that you’re are scheduling content for a content provider on television. How would you determine the best times to schedule content?Â
+#### 15. Let’s say that you’re are scheduling content for a content provider on television. How would you determine the best times to schedule content?
