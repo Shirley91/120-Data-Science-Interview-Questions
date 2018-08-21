@@ -7,7 +7,7 @@ Here are the answers to [120 Data Science Interview Questions](http://www.datasc
 - [Predictive Modeling](predictive-modeling.md)
 - [Probability](probability.md)
 - [Product Metrics](product-metrics.md)
-- [Programming](programming.md)
+- [Programming](programming.md) with code (code.ipynb)
 - [Statistical Inference](statistical-inference.md)
 
 Feel free to send me a pull request if you find any mistakes or have better answers.
