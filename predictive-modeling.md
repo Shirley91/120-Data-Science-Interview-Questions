@@ -90,7 +90,7 @@
 - curse of dimensionality
 - adding random noise makes the model more complicated but useless
 - computational cost
-- Methods to avoid the problem: reduce the number of features by manually selecting only required features or using a medel selection algorithm; use regularization (LASSO).
+- Methods to avoid the problem: reduce the number of features by manually selecting only required features or using a model selection algorithm; use regularization (LASSO).
 
 #### 9. Given training data on tweets and their retweets, how would you predict the number of retweets of a given tweet after 7 days after only observing 2 days worth of data?
 - Build a time series model with the training data with a seven day cycle and then use that for a new data with only 2 days data.
@@ -130,7 +130,6 @@
 - for each user, assign a score of how likely someone would send an email to
 - the rest is feature engineering:
   - number of past emails, how many responses, the last time they exchanged an email, whether the last email ends with a question mark, features about the other users, etc.
-- Ask someone for more details.
 - People who someone sent emails the most in the past, conditioning on time decay.
 
 #### 14. How would you suggest to a franchise where to open a new store?
