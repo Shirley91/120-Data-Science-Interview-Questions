@@ -3,7 +3,7 @@
 
 #### 1. Bobo the amoeba has a 25%, 25%, and 50% chance of producing 0, 1, or 2 offspring, respectively. Each of Bobo’s descendants also have the same probabilities. What is the probability that Bobo’s lineage dies out?
   - p=1/4+1/4*p+1/2*p^2 => p=1/2
-#### 2. In any 15-minute interval, there is a 20% probability that you will see at least one shooting star. What is the proba- bility that you see at least one shooting star in the period of an hour?
+#### 2. In any 15-minute interval, there is a 20% probability that you will see at least one shooting star. What is the probability that you see at least one shooting star in the period of an hour?
   - 1-(0.8)^4. Or, we can use Poisson processes
 #### 3. How can you generate a random number between 1 - 7 with only a die?
   - If generate a random number means a uniformly distributed random number, we need to roll the die twice, keep track of the first (r1) and second (r2) roll, there are 36 outcomes: (1,1), (1,2), ..., (6,6). If get (6,6), just re-roll the die twice again untill get a non-(6,6). So there are 35 equally probable results, and use the formula (r1 * 6 + r2) % 7 + 1 to generate a random number between 1 - 7.
