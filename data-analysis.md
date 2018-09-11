@@ -24,7 +24,7 @@
     - It depends on your model. If your model suffers from high bias, getting more data won’t improve your test results beyond a point. You’d need to add more features, etc.
   - Practically,
     - Also there’s a tradeoff between having more data and the additional storage, computational power, memory it requires. Hence, always think about the cost of having more data.
-#### 5. What are advantages of plotting your data before per- forming analysis?
+#### 5. What are advantages of plotting your data before performing analysis?
   - 1) Data sets have errors. You won't find them all but you might find some, e.g. That 212 year old man. That 9 foot tall woman.  
   - 2) Variables can have skewness, outliers etc. Then the arithmetic mean might not be useful, which means the standard deviation isn't useful.  
   - 3) Variables can be multimodal! If a variable is multimodal then anything based on its mean or median is going to be suspect. 
@@ -66,7 +66,7 @@
 #### 13. Your linear regression didn’t run and communicates that there are an infinite number of best estimates for the regression coefficients. What could be wrong?
   - p > n.
   - If some of the explanatory variables are perfectly correlated (positively or negatively) then the coefficients would not be unique. 
-#### 14. You run your regression on different subsets of your data, and  nd that in each subset, the beta value for a certain variable varies wildly. What could be the issue here?
+#### 14. You run your regression on different subsets of your data, and find that in each subset, the beta value for a certain variable varies wildly. What could be the issue here?
   - The dataset might be heterogeneous. In which case, it is recommended to cluster datasets into different subsets wisely, and then draw different models for different subsets. Or, use models like non parametric models (trees) which can deal with heterogeneity quite nicely.
 #### 15. What is the main idea behind ensemble learning? If I had many different models that predicted the same response variable, what might I want to do to incorporate all of the models? Would you expect this to perform better than an individual model or worse?
   - Ensemble learning uses multiple learning algorithms to obtain better predictive performance than could be obtained from any of the constituent learning algorithms alone. 
@@ -81,7 +81,7 @@
     - Stacking: use the outputs of your models as inputs to a meta-model.   
   - For example, if you're doing binary classification, you can use all the probability outputs of your individual models as inputs to a final logistic regression (or any model, really) that can combine the probability estimates.  
   - One very important point is to make sure that the output of your models are out-of-sample predictions. This means that the predicted value for any row in your dataframe should NOT depend on the actual value for that row.
-#### 16. Given that you have wifi data in your o ce, how would you determine which rooms and areas are underutilized and overutilized?
+#### 16. Given that you have wifi data in your office, how would you determine which rooms and areas are underutilized and overutilized?
   - 1. Collect data: of wifi-accessed computers / laptops / cell phones, number in different time of a work day in each room.
   - 2. Calculate mean of number of accessed devices in each room, mean of online time in each room in a week or month.
   - 3. Generally the higher mean of number and time, the room is more utilized. We can roughly define underutilized as room with mean less than average, and vice versa.
@@ -104,13 +104,13 @@
 {\displaystyle \Pr\\{X_{ni}=1\\}={\frac {\exp({\beta _{n}}-{\delta _{i}})}{1+\exp({\beta _{n}}-{\delta _{i}})}},}  
 where  is the ability of person  and  is the difficulty of item}.
 #### 23. You have 5000 people that rank 10 sushis in terms of saltiness. How would you aggregate this data to estimate the true saltiness rank in each sushi?
-  - Some people would take the mean rank of each sushi.  If I wanted something simple, I would use the median, since ranks are (strictly speaking) ordinal and not interval, so adding them is a bit risque (but people do it all the time and you probably won't be far wrong).
-#### 24. Given data on congressional bills and which congressional representatives co-sponsored the bills, how would you determine which other representatives are most similar to yours in voting behavior? How would you evaluate who is the most liberal? Most republican? Most bipartisan?
+  - Some people would take the mean rank of each sushi. If I wanted something simple, I would use the median, since ranks are (strictly speaking) ordinal and not interval, so adding them is a bit risque (but people do it all the time and you probably won't be far wrong).
+#### 24. Given data on congressional bills and which congressional representatives cosponsored the bills, how would you determine which other representatives are most similar to yours in voting behavior? How would you evaluate who is the most liberal? Most republican? Most bipartisan?
   - collaborative filtering. you have your votes and we can calculate the similarity for each representatives and select the most similar representative
   - for liberal and republican parties, find the mean vector and find the representative closest to the center point
 #### 25. How would you come up with an algorithm to detect plagiarism in online content?
   - reduce the text to a more compact form (e.g. fingerprinting, bag of words, NLP) then compare those with other texts by calculating the similarity
-#### 26. You have data on all purchases of customers at a grocery store. Describe to me how you would program an algo- rithm that would cluster the customers into groups. How would you determine the appropriate number of clusters to include?
+#### 26. You have data on all purchases of customers at a grocery store. Describe to me how you would program an algorithm that would cluster the customers into groups. How would you determine the appropriate number of clusters to include?
   - K-means clustering
   - choose k with something useful or interpretable (http://www.sthda.com/english/articles/29-cluster-validation-essentials/96-determining-the-optimal-number-of-clusters-3-must-know-methods/)
     - 'Elbow' method with small SSE(https://bl.ocks.org/rpgove/0060ff3b656618e9136b)
