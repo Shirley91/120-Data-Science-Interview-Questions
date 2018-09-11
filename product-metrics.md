@@ -46,7 +46,7 @@
 #### 8. You’re a restaurant and are approached by Groupon to run a deal. What data would you ask from them in order to determine whether or not to do the deal?
   * for similar restaurants (they should define similarity), what's the deal (such as 10% off, a dish/drink for free, meal combo/value set), number of people use the deal, average increase in revenue gain per coupon, average increase in customers per coupon
   
-#### 9. You are tasked with improving the e ciency of a subway system. Where would you start?
+#### 9. You are tasked with improving the efficiency of a subway system. Where would you start?
   * define efficiency
   
 #### 10. Say you are working on Facebook News Feed. What would be some metrics that you think are important? How would you make the news each person gets more relevant?
