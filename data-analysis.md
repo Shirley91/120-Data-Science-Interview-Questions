@@ -57,7 +57,7 @@
 #### 11. Let’s say you’re given an unfeasible amount of predictors in a predictive modeling task. What are some ways to make the prediction more feasible?
   - PCA
 #### 12. Now you have a feasible amount of predictors, but you’re fairly sure that you don’t need all of them. How would you perform feature selection on the dataset?
-  - retularixation: ridge / lasso / elastic net
+  - regularization: ridge / lasso / elastic net
   - Univariate Feature Selection where a statistical test is applied to each feature individually. You retain only the best features according to the test outcome scores
   - "Recursive Feature Elimination":  
     - First, train a model with all the feature and evaluate its performance on held out data.
